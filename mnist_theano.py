@@ -31,15 +31,12 @@ def load_data(dataset):
 			dtype=theano.config.floatX), borrow=borrow)
 		return shared_x, T.cast(shared_y, 'int32')
 	
-	test_set_x, test_set_y = shared_dataset(test_set)
-	valid_set_x, valid_set_y = shared_dataset(valid_set)
-	train_set_x, train_set_y = shared_dataset(train_set)
+	trnx = numpy.vstack((train_set[0], valid_set[0]))
+	trny = numpy.concatenate((train_set[1], valid_set[1]))
 	
-	rval = [(train_set_x, train_set_y), (valid_set_x, valid_set_y),
-	(test_set_x, test_set_y)]
+	train_set_x, train_set_y = shared_dataset((trnx, trny))
 	
-	return rval
-
+	return (train_set_x, train_set_y)
 
 def timit_mlp():
 	#Parameters
@@ -52,12 +49,8 @@ def timit_mlp():
 	dataset = 'data/mnist.pkl.gz'
 
 	print '...loading the data'
-
-	datasets = load_data(dataset)
 	
-	train_set_x, train_set_y = datasets[0]
-	#valid_set_x, valid_set_y = datasets[1]
-	#test_set_x, test_set_y = datasets[2]
+	train_set_x, train_set_y = load_data(dataset)
 	
 	n_train_batches = train_set_x.get_value(borrow=True).shape[0] // batch_size
 	#n_valid_batches = valid_set_x.get_value(borrow=True).shape[0] // batch_size
@@ -122,18 +115,21 @@ def timit_mlp():
 
 	print '...training'
 
+	gc.disable()
+	start_time = timer()
+	
 	for i in range(10):
 		total_cost = 0.0
 		count = 0.0
-		gc.disable()
-		start_time = timer()
 		for minibatch_index in range(n_train_batches):
 			minibatch_avg_cost = train_model(minibatch_index)
 			total_cost += minibatch_avg_cost
 			count += 1
-		end_time = timer()
-		gc.enable()
-		print 'Epoch: {}, Loss: {}, Time: {} seconds'.format(i+1, total_cost/count, end_time - start_time)
+	
+	end_time = timer()
+	
+	gc.enable()
+	print 'Loss: {}, Time: {} seconds'.format(total_cost/count, end_time - start_time)
 	
 	print '\nSingle forw+back+update call\n'
 
