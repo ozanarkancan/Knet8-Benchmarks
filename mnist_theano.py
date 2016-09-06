@@ -14,6 +14,7 @@ import numpy
 
 import theano
 import theano.tensor as T
+import gc
 
 def load_data(dataset):
 	with gzip.open(dataset, 'rb') as f:
@@ -124,20 +125,24 @@ def timit_mlp():
 	for i in range(10):
 		total_cost = 0.0
 		count = 0.0
+		gc.disable()
 		start_time = timer()
 		for minibatch_index in range(n_train_batches):
 			minibatch_avg_cost = train_model(minibatch_index)
 			total_cost += minibatch_avg_cost
 			count += 1
 		end_time = timer()
+		gc.enable()
 		print 'Epoch: {}, Loss: {}, Time: {} seconds'.format(i+1, total_cost/count, end_time - start_time)
 	
 	print '\nSingle forw+back+update call\n'
 
 	for i in range(10):
+		gc.disable()
 		start_time = timer()
 		minibatch_avg_cost = train_model(i)
 		end_time = timer()
+		gc.enable()
 
 		print 'Epoch: {}, Loss(Batch): {}, Time: {} seconds'.format(i+1, minibatch_avg_cost, end_time - start_time)
 
