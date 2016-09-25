@@ -68,10 +68,14 @@ def timit_linreg():
 	updates = [ (param, param - lr * gparam) for param, gparam in zip(params, gparams)]
 	
 	train_model = theano.function(
-		inputs=[x, y],
+		inputs=[],
 		outputs=mse,
 		updates=updates,
-		allow_input_downcast=True
+		allow_input_downcast=True,
+		givens={
+			x: trnx,
+			y: trny
+		}
 		)
 
 	print '...training'
@@ -80,7 +84,7 @@ def timit_linreg():
 	start_time = timer()
 	
 	for i in range(10000):
-		cost = train_model(trnx, trny)
+		cost = train_model()
 	
 	end_time = timer()
 	
@@ -92,7 +96,7 @@ def timit_linreg():
 	for i in range(10):
 		gc.disable()
 		start_time = timer()
-		cost = train_model(trnx, trny)
+		cost = train_model()
 		end_time = timer()
 		gc.enable()
 
