@@ -49,7 +49,7 @@ train_step = tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy)
 # Train
 tf.initialize_all_variables().run()
 start_time = timeit.default_timer()
-for i in range(10):
+while mnist.train.epochs_completed != 10:
   batch_xs, batch_ys = mnist.train.next_batch(100)
   train_step.run({x: batch_xs, y_: batch_ys})
 end_time = timeit.default_timer()
@@ -57,7 +57,7 @@ end_time = timeit.default_timer()
 print("Total time is %s" % (end_time - start_time))
 
 # Test trained model This part agrees with the official documentation so the implementation is correct
-#correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
-#accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
-#print(accuracy.eval({x: mnist.test.images, y_: mnist.test.labels}))
+correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
+accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+print(accuracy.eval({x: mnist.test.images, y_: mnist.test.labels}))
 
