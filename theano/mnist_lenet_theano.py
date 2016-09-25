@@ -126,7 +126,7 @@ def timit_lenet():
 	batch_size = 100
 	lr = 0.1
 
-	dataset = 'data/mnist.pkl.gz'
+	dataset = '../data/mnist.pkl.gz'
 
 	print '...loading the data'
 	

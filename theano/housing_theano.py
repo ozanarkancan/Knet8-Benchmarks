@@ -18,7 +18,7 @@ import gc
 import csv
 
 def load_data():
-	data = numpy.loadtxt('data/housing.data')
+	data = numpy.loadtxt('../data/housing.data')
 	
 	x = data[:, 0:13]
 	y = data[:, 13:]
