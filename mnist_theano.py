@@ -44,7 +44,7 @@ def timit_mlp():
 	n_hidden = 100
 	n_out = 10
 	batch_size = 100
-	lr = 0.01
+	lr = 0.5
 
 	dataset = 'data/mnist.pkl.gz'
 
@@ -66,24 +66,14 @@ def timit_mlp():
 
 	#Model Parameters
 
-	Wh_values = numpy.asarray(
-			rng.uniform(
-				low=-numpy.sqrt(6. / (n_in + n_hidden)),
-				high=numpy.sqrt(6. / (n_in + n_hidden)),
-				size=(n_in, n_hidden)
-				),
+	Wh_values = numpy.asarray(0.1*numpy.random.randn(n_in, n_hidden),
 			dtype=theano.config.floatX
 			)
 	Wh = theano.shared(value=Wh_values, name='Wh', borrow=True)
 	bh_values = numpy.zeros((n_hidden,), dtype=theano.config.floatX)
         bh = theano.shared(value=bh_values, name='bh', borrow=True)
 
-	Wo_values = numpy.asarray(
-			rng.uniform(
-				low=-numpy.sqrt(6. / (n_hidden + n_out)),
-				high=numpy.sqrt(6. / (n_hidden + n_out)),
-				size=(n_hidden, n_out)
-				),
+	Wo_values = numpy.asarray(0.1*numpy.random.randn(n_hidden, n_out),
 			dtype=theano.config.floatX
 			)
 	Wo = theano.shared(value=Wo_values, name='Wo', borrow=True)
