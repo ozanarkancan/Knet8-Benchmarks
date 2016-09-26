@@ -9,7 +9,7 @@ cmd:text('Basic Mnist example on Torch7')
 cmd:text('Options')
 cmd:option('--seed',1,'initial random seed')
 cmd:option('--gpu',false,'boolean option')
-cmd:option('--lr',0.001,'learning rate')
+cmd:option('--lr',0.5,'learning rate')
 cmd:option('--batchsize',100,'batch size')
 cmd:option('--epoch',10,'epoch')
 cmd:text()
@@ -35,6 +35,20 @@ testset = {
    data = dataq.data[{{1,10000}}]:double(),
    label = dataq.label[{{1,10000}}]
 }
+
+function scale(data, min, max)
+     range = max - min
+     dmin = data:min()
+     dmax = data:max()
+     drange = dmax - dmin
+    data:add(-dmin)
+    data:mul(range)
+    data:mul(1/drange)
+    data:add(min)
+end
+
+scale(trainingset.data,0,1)
+scale(testset.data,0,1)
 
 -- build the model
 local linearLayer = nn.Linear(28*28,10)

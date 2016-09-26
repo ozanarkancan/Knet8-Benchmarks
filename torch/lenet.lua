@@ -6,8 +6,8 @@ require 'nn'
 cmd = torch.CmdLine()
 cmd:text('Options')
 cmd:option('--seed',1,'initial random seed')
-cmd:option('--gpu',true,'boolean option')
-cmd:option('--lr',0.001,'learning rate')
+cmd:option('--gpu',false,'boolean option')
+cmd:option('--lr',0.5,'learning rate')
 cmd:option('--batchsize',100,'batch size')
 cmd:option('--epoch',1,'epoch')
 cmd:text()
@@ -33,6 +33,19 @@ testset = {
   label = dataw.label[{{1,10000}}]
 }
 
+function scale(data, min, max)
+     range = max - min
+     dmin = data:min()
+     dmax = data:max()
+     drange = dmax - dmin
+    data:add(-dmin)
+    data:mul(range)
+    data:mul(1/drange)
+    data:add(min)
+end
+
+scale(trainingset.data,0,1)
+scale(testset.data,0,1)
    
 trainingset.data=trainingset.data:view(trainingset.size,1,28,28) -- from 28x28 to 1x28x28
 testset.data = testset.data:view(testset.size,1,28,28) 
