@@ -9,7 +9,7 @@ cmd:text('Basic MLP example on Mnist data with Torch7')
 cmd:text('Options')
 cmd:option('--seed',1,'initial random seed')
 cmd:option('--gpu',false,'boolean option')
-cmd:option('--lr',0.001,'learning rate')
+cmd:option('--lr',0.5,'learning rate')
 cmd:option('--batchsize',100,'batch size')
 cmd:option('--epoch',10,'epoch')
 cmd:text()
@@ -23,16 +23,33 @@ torch.manualSeed(opt.seed)
 -- prepare the data
 dataw = mnist.traindataset()
 dataq = mnist.testdataset()
+
 trainingset = {
    size = 60000,
    data = dataw.data[{{1,60000}}]:double(),
    label = dataw.label[{{1,60000}}]
 }
+
 testset = {
    size = 10000,
    data = dataq.data[{{1,10000}}]:double(),
    label = dataq.label[{{1,10000}}]
 }
+
+function scale(data, min, max)
+     range = max - min
+     dmin = data:min()
+     dmax = data:max()
+     drange = dmax - dmin
+    data:add(-dmin)
+    data:mul(range)
+    data:mul(1/drange)
+    data:add(min)
+end
+
+scale(trainingset.data,0,1)
+scale(testset.data,0,1)
+
 
 -- build the model
 -- build the model
