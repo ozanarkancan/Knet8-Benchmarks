@@ -33,7 +33,8 @@ layer {
   inner_product_param {
     num_output: 10
     weight_filler {
-      type: "xavier"
+      type: "gaussian"
+      std: 0.1
     }
     bias_filler {
       type: "constant"
