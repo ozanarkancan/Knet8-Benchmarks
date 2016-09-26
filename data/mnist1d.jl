@@ -21,8 +21,9 @@ end
 function makeh5(x, y; n=784, xscale=255, atype=Array{Float32})
     m = length(y)
     x = convert(atype, reshape(transpose(reshape(x, n, m)), m, n, 1, 1)) / xscale
-    y[y.==0.0] = 10.0
-    y = convert(atype, reshape(y, m, 1))
+    x = permutedims(x, [2, 3, 4, 1])
+    y = convert(Array{Int32}, reshape(y, m, 1, 1, 1))
+    y = permutedims(y, [4, 3, 2, 1])
     return (x, y)
 end
 
@@ -30,12 +31,19 @@ if !isdefined(:xtrn)
     (xtrn,xtst,ytrn,ytst)=loaddata()
 end
 
-h5xtrn, h5ytrn = makeh5(xtrn, ytrn)
-h5xtst, h5ytst = makeh5(xtst, ytst)
+xtrn, ytrn = makeh5(xtrn, ytrn)
+xtst, ytst = makeh5(xtst, ytst)
+println(size(xtrn))
+# Caffe has HDF5 input restrictions, so we need to split dataset to smaller parts
+i, partlen = 1, 10000
+while i <= 60000 / partlen
+    lower, upper = (i-1)*partlen+1, i*partlen
+    h5write(joinpath(curdir, "mnist_train$(i).h5"), "data", xtrn[:,:,:,lower:upper])
+    h5write(joinpath(curdir, "mnist_train$(i).h5"), "label", ytrn[:,:,:,lower:upper])
+    i += 1
+end
 
-h5write(joinpath(curdir, "mnist_train.h5"), "data", h5xtrn)
-h5write(joinpath(curdir, "mnist_train.h5"), "label", h5ytrn)
-h5write(joinpath(curdir, "mnist_test.h5"), "data", h5xtst)
-h5write(joinpath(curdir, "mnist_test.h5"), "label", h5ytst)
+h5write(joinpath(curdir, "mnist_test.h5"), "data", xtst)
+h5write(joinpath(curdir, "mnist_test.h5"), "label", ytst)
 
 info("Data processing done.")
