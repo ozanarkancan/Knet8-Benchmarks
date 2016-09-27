@@ -17,8 +17,8 @@ Y = tf.constant(train_y, name="Y")
 
 
 # Model parameters
-W = tf.Variable(0.01*tf.random_normal([1,13], dtype=tf.float64))
-b = tf.Variable(tf.zeros([1],  dtype=tf.float64))
+W = tf.Variable(0.01*tf.random_normal([1,13], dtype=tf.float32))
+b = tf.Variable(tf.zeros([1],  dtype=tf.float32))
 
 # Construct the model
 model = tf.add(tf.matmul(W, X), b)
