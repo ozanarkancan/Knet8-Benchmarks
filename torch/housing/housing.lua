@@ -64,7 +64,7 @@ for i = 1,opt.epoch do
    model:backward(data.train_data,criterion:backward(pred,data.train_targets))
    model:updateParameters(opt.lr)
    total_time = total_time +   torch.toc(tic)
-   print(string.format('Epoch: %d Current loss: %4f', i, loss))
+   --print(string.format('Epoch: %d Current loss: %4f', i, loss))
 end
 print(string.format('Total time:%.4f',total_time))
 end

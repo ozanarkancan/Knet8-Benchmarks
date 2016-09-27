@@ -2,7 +2,7 @@
 local nninit = require 'nninit'
 mnist = require 'mnist'
 require 'nn'
-
+local cudnn = require 'cudnn'
 
 cmd = torch.CmdLine()
 cmd:text('Basic MLP example on Mnist data with Torch7')
@@ -26,25 +26,25 @@ dataq = mnist.testdataset()
 
 trainingset = {
    size = 60000,
-   data = dataw.data[{{1,60000}}]:double(),
+   data = dataw.data[{{1,60000}}]:float(),
    label = dataw.label[{{1,60000}}]
 }
 
 testset = {
    size = 10000,
-   data = dataq.data[{{1,10000}}]:double(),
+   data = dataq.data[{{1,10000}}]:float(),
    label = dataq.label[{{1,10000}}]
 }
 
 function scale(data, min, max)
-     range = max - min
-     dmin = data:min()
-     dmax = data:max()
-     drange = dmax - dmin
-    data:add(-dmin)
-    data:mul(range)
-    data:mul(1/drange)
-    data:add(min)
+   range = max - min
+   dmin = data:min()
+   dmax = data:max()
+   drange = dmax - dmin
+   data:add(-dmin)
+   data:mul(range)
+   data:mul(1/drange)
+   data:add(min)
 end
 
 scale(trainingset.data,0,1)
@@ -62,11 +62,9 @@ linearLayer2.bias = torch.zeros(10)
 
 model = nn.Sequential()
    :add(nn.Reshape(28*28))
-   --:add(nn.Linear(28*28, 64):init('weight', nninit.normal, 0, 0.1))
    :add(linearLayer)
    :add(nn.ReLU())
    :add(linearLayer2)
-   --:add(nn.Linear(64, 10):init('weight', nninit.normal, 0, 0.1))
    :add(nn.LogSoftMax())
 -- loss function
 criterion = nn.ClassNLLCriterion()
@@ -86,14 +84,14 @@ end
 function eval(dataset, batch_size)
    local count = 0
    for i = 1,dataset.size,batch_size do
-      local size = math.min(i + batch_size - 1, dataset.size) - i
+      local size = math.min(batch_size, trainingset.size - i + 1)
       local inputs,targets
       if(opt.gpu) then
-            inputs = dataset.data[{{i,i+size-1}}]:cuda()
-            targets = dataset.label[{{i,i+size-1}}]:long():cuda()
+	 inputs = dataset.data[{{i,i+size-1}}]:cuda()
+	 targets = dataset.label[{{i,i+size-1}}]:long():cuda()
       else
-            inputs = dataset.data[{{i,i+size-1}}]
-            targets = dataset.label[{{i,i+size-1}}]:long()
+	 inputs = dataset.data[{{i,i+size-1}}]
+	 targets = dataset.label[{{i,i+size-1}}]:long()
       end
       local outputs = model:forward(inputs)
       outputs = outputs:float()
@@ -111,20 +109,20 @@ function train(batch_size)
    local current_loss = 0
    local count = 0
    for t = 1,trainingset.size,batch_size do
-      local size = math.min(t + batch_size - 1, trainingset.size) - t
+      local size = math.min(batch_size, trainingset.size- t + 1)
       local inputs,targets
       if opt.gpu then
-     inputs=torch.Tensor(size, 28, 28):cuda()
-     targets = torch.Tensor(size):cuda()
+	 inputs=torch.Tensor(size, 28, 28):cuda()
+	 targets = torch.Tensor(size):cuda()
       else
-     inputs = torch.Tensor(size, 28, 28)
-     targets = torch.Tensor(size)
+	 inputs = torch.Tensor(size, 28, 28)
+	 targets = torch.Tensor(size)
       end
       for i = 1,size do
-     local input = trainingset.data[i+t]
-     local target = trainingset.label[i+t]
-     inputs[i] = input
-     targets[i] = target
+	 local input = trainingset.data[i+t-1]
+	 local target = trainingset.label[i+t-1]
+	 inputs[i] = input
+	 targets[i] = target
       end
       targets:add(1) -- to escape from class 0
       local tic = torch.tic()
@@ -148,7 +146,7 @@ do
       local loss,epoch_time = train(opt.batchsize)
       total_time = total_time + epoch_time
       local eval_res = eval(testset,opt.batchsize)
-     -- print(string.format('Epoch: %d Testset Accuracy: %.4f Time:%.4f', i,eval_res,epoch_time))
+      -- print(string.format('Epoch: %d Testset Accuracy: %.4f Time:%.4f', i,eval_res,epoch_time))
       print(string.format('Epoch: %d Loss: %.4f Testset Accuracy: %.4f Time:%.4f', i,loss,eval_res,epoch_time))
    end
    print(string.format('Time:%.4f', total_time))
