@@ -44,7 +44,7 @@ def make_lmdb(data, filename):
     N = data[0].shape[0]
     X = np.zeros((N, 1, 1, 784), dtype=np.float32)
     X[:,0,0,:] = data[0]
-    y = reshape(data[1], (N, 1))
+    y = data[1]
     map_size = X.nbytes * 10
     env = lmdb.open(filename, map_size=map_size)
 

@@ -2,7 +2,7 @@ net: "softmax_train_test.prototxt"
 base_lr: 0.5
 lr_policy: "fixed"
 # test_iter: 100
-# test_interval: 6000
+# test_interval: 6000 
 display: 0
 random_seed: 1
 max_iter: 6000
