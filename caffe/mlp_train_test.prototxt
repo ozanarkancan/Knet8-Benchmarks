@@ -1,28 +1,30 @@
 name:"MLP"
 layer {
   name: "mnist"
-  type: "HDF5Data"
+  type: "Data"
   top: "data"
   top: "label"
-  hdf5_data_param {
-    source: "/home/ec2-user/Knet8-Benchmarks/data/mnist_train.txt"
-    batch_size: 100
-  }
   include {
     phase: TRAIN
+  }
+  data_param {
+    source: "/home/ec2-user/Knet8-Benchmarks/data/mnist1d_trn_lmdb"
+    batch_size: 100
+    backend: LMDB
   }
 }
 layer {
   name: "mnist"
-  type: "HDF5Data"
+  type: "Data"
   top: "data"
   top: "label"
-  hdf5_data_param {
-    source: "/home/ec2-user/Knet8-Benchmarks/data/mnist_test.txt"
-    batch_size: 100
-  }
   include {
     phase: TEST
+  }
+  data_param {
+    source: "/home/ec2-user/Knet8-Benchmarks/data/mnist1d_tst_lmdb"
+    batch_size: 100
+    backend: LMDB
   }
 }
 layer {
