@@ -12,8 +12,9 @@ epochs = 10000
 learning_rate = 0.1
 
 # Model inputs
-X = tf.placeholder(tf.float64)
-Y = tf.placeholder(tf.float64)
+X = tf.constant(x, name="X")
+Y = tf.constant(train_y, name="Y")
+
 
 # Model parameters
 W = tf.Variable(0.01*tf.random_normal([1,13], dtype=tf.float64))
@@ -29,18 +30,19 @@ optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost_funct
 
 # Initialize variables
 init = tf.initialize_all_variables()
-
-with tf.Session() as sess:
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
+with tf.Session(config=config) as sess:
     sess.run(init)
-    initial_cost = sess.run(cost_function, feed_dict={X: x ,Y:train_y})
+    initial_cost = sess.run(cost_function)
     print "initial cost is", initial_cost
     start_time = timeit.default_timer()
     for epoch in range(epochs):
-        sess.run(optimizer, feed_dict={X: x, Y: train_y})
+        sess.run(optimizer)
 #        current_cost = sess.run(cost_function, feed_dict={X: x ,Y:train_y})
 #        print current_cost
     end_time = timeit.default_timer()
-    final_cost = sess.run(cost_function, feed_dict={X: x ,Y:train_y})
+    final_cost = sess.run(cost_function)
     print("Total time %.4fs" % (end_time - start_time))
 print("Final cost is %4.f" % (final_cost))
 
