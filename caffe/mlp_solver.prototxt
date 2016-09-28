@@ -1,4 +1,4 @@
-net: "mlp_train_test.prototxt"
+net: "mlp_memory.prototxt"
 base_lr: 0.5
 lr_policy: "fixed"
 # test_iter: 100
