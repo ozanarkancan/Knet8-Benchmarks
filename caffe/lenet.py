@@ -1,10 +1,13 @@
 import os
+os.environ['GLOG_minloglevel'] = '2'
+
 import numpy as np
 import caffe
 import six.moves.cPickle as pickle
 import gzip
 from timeit import default_timer as timer
 import gc
+
 
 file_path = "/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz"
 with gzip.open(file_path, 'rb') as f:
@@ -31,4 +34,4 @@ t0 = timer()
 solver.solve()
 t1 = timer()
 gc.enable()
-print "Time : ", t1 - t0
+print "Time: %.4f" % (t1 - t0)
