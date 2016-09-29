@@ -1,0 +1,10 @@
+net: "lenet_memory.prototxt"
+base_lr: 0.1
+lr_policy: "fixed"
+# test_iter: 100
+# test_interval: 600
+display: 0
+random_seed: 1
+max_iter: 600
+snapshot_after_train: false
+solver_mode: GPU

@@ -1,0 +1,20 @@
+On GPU
+Epoch: 0 Initial Testset Accuracy: 0.0856
+Epoch: 1 Current loss: 0.352961 Testset Accuracy:0.9576 Time:1.7034
+Time:1.7034
+On GPU
+Epoch: 0 Initial Testset Accuracy: 0.0856
+Epoch: 1 Current loss: 0.353140 Testset Accuracy:0.9583 Time:1.7102
+Time:1.7102
+On GPU
+Epoch: 0 Initial Testset Accuracy: 0.0856
+Epoch: 1 Current loss: 0.353009 Testset Accuracy:0.9585 Time:1.7091
+Time:1.7091
+On GPU
+Epoch: 0 Initial Testset Accuracy: 0.0856
+Epoch: 1 Current loss: 0.353095 Testset Accuracy:0.9596 Time:1.7140
+Time:1.7140
+On GPU
+Epoch: 0 Initial Testset Accuracy: 0.0856
+Epoch: 1 Current loss: 0.353119 Testset Accuracy:0.9585 Time:1.7141
+Time:1.7141
