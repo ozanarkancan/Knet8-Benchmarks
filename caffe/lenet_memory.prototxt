@@ -1,36 +1,30 @@
 name: "LeNet"
 layer {
-  name: "mnist"
-  type: "Data"
+  type: "MemoryData"
   top: "data"
   top: "label"
   include {
     phase: TRAIN
   }
-  transform_param {
-    scale: 0.00390625
-  }
-  data_param {
-    source: "/home/ec2-user/caffe/examples/mnist/mnist_train_lmdb"
+  memory_data_param {
     batch_size: 100
-    backend: LMDB
+    channels: 1
+    height: 28
+    width: 28
   }
 }
 layer {
-  name: "mnist"
-  type: "Data"
+  type: "MemoryData"
   top: "data"
   top: "label"
   include {
     phase: TEST
   }
-  transform_param {
-    scale: 0.00390625
-  }
-  data_param {
-    source: "/home/ec2-user/caffe/examples/mnist/mnist_test_lmdb"
+  memory_data_param {
     batch_size: 100
-    backend: LMDB
+    channels: 1
+    height: 28
+    width: 28
   }
 }
 layer {

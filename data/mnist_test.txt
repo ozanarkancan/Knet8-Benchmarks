@@ -1,1 +1,0 @@
-/home/ec2-user/Knet8-Benchmarks/data/mnist_test.h5

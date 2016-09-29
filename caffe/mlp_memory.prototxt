@@ -1,35 +1,42 @@
-name:"Softmax"
+name:"MLP"
 layer {
-  name: "mnist"
-  type: "HDF5Data"
+  type: "MemoryData"
   top: "data"
   top: "label"
-  hdf5_data_param {
-    source: "/home/ec2-user/Knet8-Benchmarks/data/mnist_train.txt"
+  memory_data_param {
     batch_size: 100
-  }
-  include {
-    phase: TRAIN
+    channels: 1
+    height: 1
+    width: 784
   }
 }
 layer {
-  name: "mnist"
-  type: "HDF5Data"
-  top: "data"
-  top: "label"
-  hdf5_data_param {
-    source: "/home/ec2-user/Knet8-Benchmarks/data/mnist_test.txt"
-    batch_size: 100
-  }
-  include {
-    phase: TEST
-  }
-}
-layer {
-  name: "ip"
+  name: "ip1"
   type: "InnerProduct"
   bottom: "data"
-  top: "ip"
+  top: "ip1"
+  inner_product_param {
+    num_output: 64
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}
+layer {
+  name: "relu1"
+  type: "ReLU"
+  bottom: "ip1"
+  top: "ip1"
+}
+layer {
+  name: "ip2"
+  type: "InnerProduct"
+  bottom: "ip1"
+  top: "ip2"
   inner_product_param {
     num_output: 10
     weight_filler {
@@ -44,7 +51,7 @@ layer {
 layer {
   name: "accuracy"
   type: "Accuracy"
-  bottom: "ip"
+  bottom: "ip2"
   bottom: "label"
   top: "accuracy"
   include {
@@ -54,7 +61,7 @@ layer {
 layer {
   name: "loss"
   type: "SoftmaxWithLoss"
-  bottom: "ip"
+  bottom: "ip2"
   bottom: "label"
   top: "loss"
 }

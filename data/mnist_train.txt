@@ -1,6 +1,0 @@
-/home/ec2-user/Knet8-Benchmarks/data/mnist_train1.h5
-/home/ec2-user/Knet8-Benchmarks/data/mnist_train2.h5
-/home/ec2-user/Knet8-Benchmarks/data/mnist_train3.h5
-/home/ec2-user/Knet8-Benchmarks/data/mnist_train4.h5
-/home/ec2-user/Knet8-Benchmarks/data/mnist_train5.h5
-/home/ec2-user/Knet8-Benchmarks/data/mnist_train6.h5
