@@ -1,3 +1,5 @@
+Original repo: https://github.com/lipiji/rnn-theano/tree/master
+
 ###RNN(LSTM, GRU) using Theano
  - main_char_train.py: train the char-rnn model
 
