@@ -67,6 +67,8 @@ def batch_sequences(seqs, i2w, w2i, batch_size):
                     Y = np.concatenate((Y, zeros_m), axis=0)
                 concat_X[:, b_i, :] = X 
                 concat_Y[:, b_i, :] = Y
+	    if batch_id == 16:
+		    continue
             data_xy[batch_id] = [concat_X, concat_Y, mask, mask, len(batch_x)]
             batch_x = []
             batch_y = []

@@ -29,11 +29,18 @@ class RNN(object):
         self.layers = []
         self.params = []
         rng = np.random.RandomState(1234)
+
+	layer_input = self.X
+	shape = (self.in_size, self.hidden_size[0])
+	embed = EmbeddingLayer("e", shape, layer_input)
+	self.layers.append(embed)
+	self.params += embed.params
+
         # hidden layers
         for i in xrange(len(self.hidden_size)):
             if i == 0:
-                layer_input = self.X
-                shape = (self.in_size, self.hidden_size[0])
+                layer_input = embed.activation
+                shape = (self.hidden_size[0], self.hidden_size[0])
             else:
                 layer_input = self.layers[i - 1].activation
                 shape = (self.hidden_size[i - 1], self.hidden_size[i])
