@@ -8,7 +8,7 @@ from utils_pg import *
 from rnn import *
 import data
 
-use_gpu(0)
+#use_gpu(0)
 
 e = 0.01
 lr = 4.0
