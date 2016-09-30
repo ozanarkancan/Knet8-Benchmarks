@@ -6,6 +6,8 @@ import timeit
 data = np.load('datafile.npz')
 train_y = data['arr_1']
 x = data['arr_0']
+x = x.astype(np.float32)
+train_y = train_y.astype(np.float32)
 
 # model parameters
 epochs = 10000
