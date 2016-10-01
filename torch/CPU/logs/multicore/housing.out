@@ -1,0 +1,10 @@
+[ec2-user@ip-172-31-4-130 housing]$ th housing.lua
+Total time:0.6977
+[ec2-user@ip-172-31-4-130 housing]$ th housing.lua
+Total time:0.6928
+[ec2-user@ip-172-31-4-130 housing]$ th housing.lua
+Total time:0.6792
+[ec2-user@ip-172-31-4-130 housing]$ th housing.lua
+Total time:0.6751
+[ec2-user@ip-172-31-4-130 housing]$ th housing.lua
+Total time:0.6938
