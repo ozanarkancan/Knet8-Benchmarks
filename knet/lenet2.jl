@@ -1,7 +1,7 @@
 if !isdefined(:MNIST)
     local lo=isdefined(:load_only)
     load_only=true
-    include("mnist.jl")
+    include(Pkg.dir("Knet/examples/mnist.jl"))
     load_only=lo
 end
 

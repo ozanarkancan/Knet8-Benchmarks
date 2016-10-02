@@ -5,7 +5,7 @@ import theano.tensor as T
 from utils_pg import *
 
 class LSTMLayer(object):
-    def __init__(self, rng, layer_id, shape, X, mask, is_train = 1, batch_size = 1, p = 0.5):
+    def __init__(self, rng, layer_id, shape, X, batch_size = 1, p = 0.5):
         prefix = "LSTM_"
         layer_id = "_" + layer_id
         self.in_size, self.out_size = shape
@@ -24,7 +24,7 @@ class LSTMLayer(object):
             return _x[:, n * dim : (n + 1) * dim]
 
         X_4ifoc = T.dot(X, self.W_x_ifoc) + self.b_ifoc
-        def _active(m, x_4ifoc, pre_h, pre_c, W_h_ifoc, W_c_if, W_c_o):
+        def _active(x_4ifoc, pre_h, pre_c, W_h_ifoc, W_c_if, W_c_o):
             ifoc_preact = x_4ifoc + T.dot(pre_h, W_h_ifoc)
             c_if_preact = T.dot(pre_c, W_c_if)
 
@@ -35,21 +35,11 @@ class LSTMLayer(object):
             o = T.nnet.sigmoid(_slice(ifoc_preact, 3, self.out_size) + T.dot(c, W_c_o))
             h = o * T.tanh(c)
 
-            c = c * m[:, None]
-            h = h * m[:, None]
             return h, c
         [h, c], updates = theano.scan(_active,
-                                      sequences = [mask, X_4ifoc],
+                                      sequences = [X_4ifoc],
                                       outputs_info = [T.alloc(floatX(0.), batch_size, self.out_size),
                                                       T.alloc(floatX(0.), batch_size, self.out_size)],
                                       non_sequences = [self.W_h_ifoc, self.W_c_if, self.W_c_o],
                                       strict = True)
-        
-        # dropout
-        if p > 0:
-            srng = T.shared_randomstreams.RandomStreams(rng.randint(999999))
-            drop_mask = srng.binomial(n = 1, p = 1-p, size = h.shape, dtype = theano.config.floatX)
-            self.activation = T.switch(T.eq(is_train, 1), h * drop_mask, h * (1 - p))
-        else:
-            self.activation = T.switch(T.eq(is_train, 1), h, h)
-
+        self.activation = h

@@ -24,9 +24,12 @@ seqs, i2w, w2i, data_xy = data.char_sequence("../../data/19.txt", batch_size)
 dim_x = len(w2i)
 dim_y = len(w2i)
 print "#features = ", dim_x, "#labels = ", dim_y
+XX = theano.shared(np.asarray(data_xy[0]))
+YY = theano.shared(np.asarray(data_xy[1]))
+batch_l = data_xy[2]
 
 print "compiling..."
-model = RNN(dim_x, dim_y, hidden_size, cell, optimizer, drop_rate)
+model = RNN(dim_x, dim_y, hidden_size, XX, YY, cell, optimizer)
 
 print "training..."
 start = time.time()
@@ -35,14 +38,9 @@ count = 0
 for i in xrange(1):
     error = 0.0
     in_start = time.time()
-    for batch_id, xy in data_xy.items():
+    for batchind in range(len(batch_l)):
 	count += 1
-        X = xy[0] 
-        Y = xy[1]
-        maskX = xy[2]
-        maskY = xy[3]
-        local_batch_size = xy[4]
-        cost = model.train(X, maskX, Y, maskY, lr, local_batch_size)
+        cost = model.train(batchind, lr, batch_l[batchind])
         error += cost
     in_time = time.time() - in_start
 

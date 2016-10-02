@@ -211,16 +211,16 @@ def timit_lenet():
 	gc.enable()
 	print 'Loss: {}, Time: {} seconds'.format(total_cost/count, end_time - start_time)
 	
-	print '\nSingle forw+back+update call\n'
+	#print '\nSingle forw+back+update call\n'
 
-	for i in range(10):
-		gc.disable()
-		start_time = timer()
-		minibatch_avg_cost = train_model(i)
-		end_time = timer()
-		gc.enable()
+	#for i in range(10):
+	#	gc.disable()
+	#	start_time = timer()
+	#	minibatch_avg_cost = train_model(i)
+	#	end_time = timer()
+	#	gc.enable()
 
-		print 'Epoch: {}, Loss(Batch): {}, Time: {} seconds'.format(i+1, minibatch_avg_cost, end_time - start_time)
+	#	print 'Epoch: {}, Loss(Batch): {}, Time: {} seconds'.format(i+1, minibatch_avg_cost, end_time - start_time)
 
 
 if __name__ == "__main__":
