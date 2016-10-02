@@ -91,16 +91,16 @@ def timit_linreg():
 	gc.enable()
 	print 'Loss: {}, Time: {} seconds'.format(cost, end_time - start_time)
 	
-	print '\nSingle forw+back+update call\n'
+	#print '\nSingle forw+back+update call\n'
 
-	for i in range(10):
-		gc.disable()
-		start_time = timer()
-		cost = train_model()
-		end_time = timer()
-		gc.enable()
+	#for i in range(10):
+	#	gc.disable()
+	#	start_time = timer()
+	#	cost = train_model()
+	#	end_time = timer()
+	#	gc.enable()
 
-		print 'Epoch: {}, Loss: {}, Time: {} seconds'.format(i+1, cost, end_time - start_time)
+	#	print 'Epoch: {}, Loss: {}, Time: {} seconds'.format(i+1, cost, end_time - start_time)
 
 
 if __name__ == "__main__":

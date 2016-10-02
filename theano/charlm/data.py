@@ -41,6 +41,9 @@ def batch_sequences(seqs, i2w, w2i, batch_size):
     data_xy = {}
     batch_x = []
     batch_y = []
+    XX = []
+    YY = []
+    b_lengths = []
     seqs_len = []
     batch_id = 0
     dim = len(w2i)
@@ -69,12 +72,15 @@ def batch_sequences(seqs, i2w, w2i, batch_size):
                 concat_Y[:, b_i, :] = Y
 	    if batch_id == 16:
 		    continue
-            data_xy[batch_id] = [concat_X, concat_Y, mask, mask, len(batch_x)]
+	    XX.append(concat_X)
+	    YY.append(concat_Y)
+	    b_lengths.append(len(batch_x))
+            #data_xy[batch_id] = [concat_X, concat_Y, mask, mask, len(batch_x)]
             batch_x = []
             batch_y = []
             seqs_len = []
             batch_id += 1
-    return data_xy
+    return (XX, YY, b_lengths)
 
 # limit memory
 def batch_index(seqs, i2w, w2i, batch_size):

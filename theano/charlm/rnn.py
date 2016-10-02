@@ -9,15 +9,16 @@ from logistic import *
 from updates import *
 
 class RNN(object):
-    def __init__(self, in_size, out_size, hidden_size,
-                 cell = "gru", optimizer = "rmsprop", p = 0.5):
+    def __init__(self, in_size, out_size, hidden_size, XX, YY,
+                 cell = "gru", optimizer = "rmsprop"):
+	self.Xdata = XX
+	self.Ydata = YY
         self.X = T.tensor3("X")
         self.in_size = in_size
         self.out_size = out_size
         self.hidden_size = hidden_size
         self.cell = cell
-        self.drop_rate = p
-        self.is_train = T.iscalar('is_train') # for dropout
+        self.index = T.iscalar('index')
         self.batch_size = T.iscalar('batch_size') # for mini-batch training
         self.optimizer = optimizer
         self.define_layers()
@@ -44,7 +45,7 @@ class RNN(object):
                 shape = (self.hidden_size[i - 1], self.hidden_size[i])
 
             hidden_layer = LSTMLayer(rng, str(i), shape, layer_input,
-            	self.is_train, self.batch_size, self.drop_rate)
+            	self.batch_size, 0.0)
             
             self.layers.append(hidden_layer)
             self.params += hidden_layer.params
@@ -78,7 +79,11 @@ class RNN(object):
         optimizer = eval(self.optimizer)
         updates = optimizer(self.params, gparams, lr)
         
-        self.train = theano.function(inputs = [self.X, self.Y, lr, self.batch_size],
+        self.train = theano.function(inputs = [self.index, lr, self.batch_size],
                                                outputs = cost,
                                                updates = updates,
-					       on_unused_input='warn')
+					       on_unused_input='warn',
+					       givens={
+						       self.X: self.Xdata[self.index],
+						       self.Y: self.Ydata[self.index]
+					       })
