@@ -42,7 +42,7 @@ for i in xrange(1):
         maskX = xy[2]
         maskY = xy[3]
         local_batch_size = xy[4]
-        cost = model.train(X, maskX, Y, maskY, lr, local_batch_size)
+        cost = model.train(X, Y, lr, local_batch_size)
         error += cost
     in_time = time.time() - in_start
 
