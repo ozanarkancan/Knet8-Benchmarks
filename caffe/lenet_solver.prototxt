@@ -1,4 +1,4 @@
-net: "lenet_memory.prototxt"
+net: "lenet.prototxt"
 base_lr: 0.1
 lr_policy: "fixed"
 # test_iter: 100

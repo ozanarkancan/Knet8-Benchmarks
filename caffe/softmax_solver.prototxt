@@ -1,4 +1,4 @@
-net: "softmax_memory.prototxt"
+net: "softmax.prototxt"
 base_lr: 0.5
 lr_policy: "fixed"
 # test_iter: 100
