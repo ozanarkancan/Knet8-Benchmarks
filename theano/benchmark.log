@@ -1,0 +1,149 @@
+Theano Benchmarks Using: gpu 
+*** Housing Example ***...loading the data
+(506, 13)
+(506, 1)
+...building the model
+...training
+Loss: 21.8948307037, Time: 1.89881110191 seconds
+...loading the data
+(506, 13)
+(506, 1)
+...building the model
+...training
+Loss: 21.8948326111, Time: 1.8880469799 seconds
+...loading the data
+(506, 13)
+(506, 1)
+...building the model
+...training
+Loss: 21.8948307037, Time: 1.88892102242 seconds
+...loading the data
+(506, 13)
+(506, 1)
+...building the model
+...training
+Loss: 21.8948326111, Time: 1.89967298508 seconds
+...loading the data
+(506, 13)
+(506, 1)
+...building the model
+...training
+Loss: 21.8948307037, Time: 1.88905692101 seconds
+...loading the data
+(506, 13)
+(506, 1)
+...building the model
+...training
+Loss: 21.8948326111, Time: 1.89926791191 seconds
+
+*** MNIST Softmax Example ***...loading the data
+...building the model
+...training
+Loss: 0.267386951922, Time: 1.40163898468 seconds
+...loading the data
+...building the model
+...training
+Loss: 0.267209140013, Time: 1.42277002335 seconds
+...loading the data
+...building the model
+...training
+Loss: 0.267367936702, Time: 1.40824103355 seconds
+...loading the data
+...building the model
+...training
+Loss: 0.267193001316, Time: 1.43124079704 seconds
+...loading the data
+...building the model
+...training
+Loss: 0.267389392927, Time: 1.44882512093 seconds
+...loading the data
+...building the model
+...training
+Loss: 0.267529839091, Time: 1.41813898087 seconds
+
+*** MNIST Mlp Example ***...loading the data
+...building the model
+...training
+Loss: 0.0225291445639, Time: 2.31077003479 seconds
+...loading the data
+...building the model
+...training
+Loss: 0.0235131537304, Time: 2.32287621498 seconds
+...loading the data
+...building the model
+...training
+Loss: 0.0222517919155, Time: 2.31441092491 seconds
+...loading the data
+...building the model
+...training
+Loss: 0.0246679597752, Time: 2.31530213356 seconds
+...loading the data
+...building the model
+...training
+Loss: 0.0230166223008, Time: 2.31094384193 seconds
+...loading the data
+...building the model
+...training
+Loss: 0.0231131795112, Time: 2.31804680824 seconds
+
+*** MNIST Lenet Example ***...loading the data
+...building the model
+...training
+Loss: 0.226579602959, Time: 3.03352999687 seconds
+...loading the data
+...building the model
+...training
+Loss: 0.226282950776, Time: 3.0334250927 seconds
+...loading the data
+...building the model
+...training
+Loss: 0.226487343938, Time: 3.04083800316 seconds
+...loading the data
+...building the model
+...training
+Loss: 0.226443978356, Time: 3.03648900986 seconds
+...loading the data
+...building the model
+...training
+Loss: 0.226367016019, Time: 3.031717062 seconds
+...loading the data
+...building the model
+...training
+Loss: 0.226360453311, Time: 3.03472685814 seconds
+
+*** Charlm Example ***Corpus length: 214325
+#dic = 84
+#features =  84 #labels =  84
+compiling...
+training...
+Iter = 0, Loss = 8.799391523, Time = 4.68602895737
+Corpus length: 214325
+#dic = 84
+#features =  84 #labels =  84
+compiling...
+training...
+Iter = 0, Loss = 10.4539338946, Time = 4.57579398155
+Corpus length: 214325
+#dic = 84
+#features =  84 #labels =  84
+compiling...
+training...
+Iter = 0, Loss = 7.79813843966, Time = 4.56697392464
+Corpus length: 214325
+#dic = 84
+#features =  84 #labels =  84
+compiling...
+training...
+Iter = 0, Loss = 14.4951942265, Time = 4.5951731205
+Corpus length: 214325
+#dic = 84
+#features =  84 #labels =  84
+compiling...
+training...
+Iter = 0, Loss = 7.71692578495, Time = 4.7080988884
+Corpus length: 214325
+#dic = 84
+#features =  84 #labels =  84
+compiling...
+training...
+Iter = 0, Loss = 9.23257146776, Time = 4.56944298744
