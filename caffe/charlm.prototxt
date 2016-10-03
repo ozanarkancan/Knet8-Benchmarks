@@ -5,11 +5,12 @@ layer {
   top: "source"
   dummy_data_param {
     shape {
-      dim: 2
+      dim: 100
       dim: 128
-      dim: 84
     }
+    data_filler: { type: "gaussian" }
   }
+
 }
 
 layer {
@@ -18,14 +19,14 @@ layer {
   top: "mask"
   dummy_data_param {
     shape {
-      dim: 2
+      dim: 100
       dim: 128
     }
   }
+    data_filler: { type: "gaussian" }
 }
 
-
-#  embed layer
+# embed layer
 layer {
   name: "embed"
   type: "Embed"
@@ -34,10 +35,10 @@ layer {
   embed_param {
     bias_term: false
     input_dim: 84
-    num_output: 256 # embedsize
+    num_output: 64 # embedsize
     weight_filler {
       type: "gaussian"
-      std: 0.1
+      std: 0.3
     }
   }
 }
@@ -46,11 +47,15 @@ layer {
 layer {
   name: "lstm"
   type: "LSTM"
-  bottom: "embed"
+  bottom: "source"
   bottom: "mask"
   top: "lstm"
   recurrent_param {
     num_output: 256 # cell capacity
+    weight_filler {
+      type: "gaussian"
+      std: 0.3
+    }
   }
 }
 
