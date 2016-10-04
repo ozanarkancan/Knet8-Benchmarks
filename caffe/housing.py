@@ -17,6 +17,7 @@ y = data[:, 13:]
 xtrn = np.zeros((506, 1, 1, 13))
 xtrn[:,0,0,:] = x
 ytrn = y.reshape((506, 1, 1, 1))
+#caffe.set_mode_cpu()
 caffe.set_mode_gpu()
 caffe.set_device(0)
 net = caffe.Net("housing.prototxt", caffe.TRAIN)
