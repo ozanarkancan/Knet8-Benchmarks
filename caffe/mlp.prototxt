@@ -1,13 +1,38 @@
 name:"MLP"
 layer {
-  type: "MemoryData"
+  name: "mnist"
+  type: "Data"
   top: "data"
   top: "label"
-  memory_data_param {
+  include {
+    phase: TRAIN
+  }
+  transform_param {
+    scale: 0.00390625
+  }
+  data_param {
+    source: "/home/ec2-user/caffe/examples/mnist/mnist_train_lmdb"
     batch_size: 100
-    channels: 1
-    height: 1
-    width: 784
+     backend: LMDB
+    prefetch: 600
+  }
+}
+layer {
+  name: "mnist"
+  type: "Data"
+  top: "data"
+  top: "label"
+  include {
+    phase: TEST
+  }
+  transform_param {
+    scale: 0.00390625
+  }
+  data_param {
+    source: "/home/ec2-user/caffe/examples/mnist/mnist_test_lmdb"
+    batch_size: 100
+    backend: LMDB
+    prefetch: 600
   }
 }
 layer {
