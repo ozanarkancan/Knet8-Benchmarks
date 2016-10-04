@@ -23,9 +23,10 @@ def make_lmdb(data, savedir):
     ytxn = ydb.begin(write=True)
 
     data = data.transpose()
-    n, m = data.shape[0] - 1, data.shape[1]
-    print n, m
-    
+    n, m = 13, 506
+    x = data[0:n]
+    y = data[13,:]
+    x = (x - x.mean(1).reshape(-1,1)) / x.std(1).reshape(-1,1)
     for i in range(m):
         # import pdb;pdb.set_trace()
         x = caffe.io.array_to_datum(data[0:n,i].reshape(1,1,13).astype(np.float))
