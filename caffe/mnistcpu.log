@@ -1,0 +1,87 @@
+LENET CPU (LMDB)
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='lenet_solver.prototxt')
+Time: 167.3842
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='lenet_solver.prototxt')
+Time: 168.3123
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='lenet_solver.prototxt')
+Time: 167.7879
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='lenet_solver.prototxt')
+Time: 167.6335
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='lenet_solver.prototxt')
+Time: 169.2851
+MLP CPU (NOT FLATTEN LMDB)
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='mlp_solver.prototxt')
+Time: 19.6654
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='mlp_solver.prototxt')
+Time: 19.7504
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='mlp_solver.prototxt')
+Time: 19.9036
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='mlp_solver.prototxt')
+Time: 19.9690
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='mlp_solver.prototxt')
+Time: 19.6289
+MLP CPU (MEMORY DATA PER BATCH FORCE LOAD)
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=True, gpu=False, iter=6000, memory=True, solver='mlp_solver2.prototxt')
+Time: 19.7832
+Iterations: 6000
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=True, gpu=False, iter=6000, memory=True, solver='mlp_solver2.prototxt')
+Time: 19.8976
+Iterations: 6000
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=True, gpu=False, iter=6000, memory=True, solver='mlp_solver2.prototxt')
+Time: 19.9159
+Iterations: 6000
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=True, gpu=False, iter=6000, memory=True, solver='mlp_solver2.prototxt')
+Time: 19.8489
+Iterations: 6000
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=True, gpu=False, iter=6000, memory=True, solver='mlp_solver2.prototxt')
+Time: 19.7128
+Iterations: 6000
+MLP CPU (MEMORY DATA FORCE BULK LOAD)
+Namespace(batchsize=100, bulk=True, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=True, gpu=False, iter=None, memory=True, solver='mlp_solver2.prototxt')
+Time: 19.4991
+Namespace(batchsize=100, bulk=True, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=True, gpu=False, iter=None, memory=True, solver='mlp_solver2.prototxt')
+Time: 19.5812
+Namespace(batchsize=100, bulk=True, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=True, gpu=False, iter=None, memory=True, solver='mlp_solver2.prototxt')
+Time: 19.3530
+Namespace(batchsize=100, bulk=True, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=True, gpu=False, iter=None, memory=True, solver='mlp_solver2.prototxt')
+Time: 19.4802
+Namespace(batchsize=100, bulk=True, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=True, gpu=False, iter=None, memory=True, solver='mlp_solver2.prototxt')
+Time: 19.6655
+SOFTMAX CPU (NOT FLATTEN LMDB)
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='softmax_solver.prototxt')
+Time: 4.0145
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='softmax_solver.prototxt')
+Time: 3.9662
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='softmax_solver.prototxt')
+Time: 3.9821
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='softmax_solver.prototxt')
+Time: 4.3645
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='softmax_solver.prototxt')
+Time: 3.9982
+SOFTMAX CPU (MEMORY DATA PER BATCH FORCE LOAD)
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=True, gpu=False, iter=6000, memory=True, solver='softmax_solver2.prototxt')
+Time: 20.4910
+Iterations: 6000
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=True, gpu=False, iter=6000, memory=True, solver='softmax_solver2.prototxt')
+Time: 20.7201
+Iterations: 6000
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=True, gpu=False, iter=6000, memory=True, solver='softmax_solver2.prototxt')
+Time: 20.6561
+Iterations: 6000
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=True, gpu=False, iter=6000, memory=True, solver='softmax_solver2.prototxt')
+Time: 20.4813
+Iterations: 6000
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=True, gpu=False, iter=6000, memory=True, solver='softmax_solver2.prototxt')
+Time: 20.4112
+Iterations: 6000
+SOFTMAX CPU (MEMORY DATA FORCE BULK LOAD)
+Namespace(batchsize=100, bulk=True, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=True, gpu=False, iter=None, memory=True, solver='softmax_solver2.prototxt')
+Time: 20.3333
+Namespace(batchsize=100, bulk=True, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=True, gpu=False, iter=None, memory=True, solver='softmax_solver2.prototxt')
+Time: 20.3309
+Namespace(batchsize=100, bulk=True, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=True, gpu=False, iter=None, memory=True, solver='softmax_solver2.prototxt')
+Time: 20.5010
+Namespace(batchsize=100, bulk=True, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=True, gpu=False, iter=None, memory=True, solver='softmax_solver2.prototxt')
+Time: 20.3802
+Namespace(batchsize=100, bulk=True, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=True, gpu=False, iter=None, memory=True, solver='softmax_solver2.prototxt')
+Time: 20.3539

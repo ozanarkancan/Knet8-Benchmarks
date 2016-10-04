@@ -26,9 +26,9 @@ def load_mnist(dataset, flatten=False):
     if flatten:
         h, w = 1, 784
 
-    xtrn = xtrn.reshape(xtrn.shape[0], 1, 1, 784).astype(np.float32)
+    xtrn = xtrn.reshape(xtrn.shape[0], 1, h, w).astype(np.float32)
     ytrn = ytrn.reshape(ytrn.shape[0], 1, 1, 1).astype(np.float32)
-    xtst = xtst.reshape(xtst.shape[0], 1, 1, 784).astype(np.float32)
+    xtst = xtst.reshape(xtst.shape[0], 1, h, w).astype(np.float32)
     ytst = ytst.reshape(ytst.shape[0], 1, 1, 1).astype(np.float32)
 
     return (xtrn, ytrn, xtst, ytst)
