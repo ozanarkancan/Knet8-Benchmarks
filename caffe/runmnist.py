@@ -26,9 +26,9 @@ def load_mnist(dataset, flatten=False):
     if flatten:
         h, w = 1, 784
 
-    xtrn = xtrn.reshape(xtrn.shape[0], 1, h, w).astype(np.float32)
+    xtrn = xtrn.reshape(xtrn.shape[0], 1, 1, 784).astype(np.float32)
     ytrn = ytrn.reshape(ytrn.shape[0], 1, 1, 1).astype(np.float32)
-    xtst = xtst.reshape(xtst.shape[0], 1, h, w).astype(np.float32)
+    xtst = xtst.reshape(xtst.shape[0], 1, 1, 784).astype(np.float32)
     ytst = ytst.reshape(ytst.shape[0], 1, 1, 1).astype(np.float32)
 
     return (xtrn, ytrn, xtst, ytst)
@@ -44,6 +44,7 @@ def main():
     parser.add_argument("--data", default=FILENAME, type=str, help="mnist pickle file path")
     parser.add_argument("--batchsize", default=100, type=int, help="batch size")
     parser.add_argument("--flatten", action="store_true", help="flatten mnist data")
+    parser.add_argument("--bulk", action="store_true", help="bulk load mnist data (force)")
     args = parser.parse_args()
 
     print args
@@ -69,16 +70,22 @@ def main():
     if not args.memory:
         solver.solve()
     else:
-        for i in range(args.iter):
-            lower, upper = i*args.batchsize, (i+1)*args.batchsize
-            solver.net.set_input_arrays(
-                data[0][lower:upper,:,:,:], data[1][lower:upper,:,:,:])
-            solver.step(1)
+        if args.bulk:
+            solver.net.set_input_arrays(data[0], data[1])
+            solver.solve()
+        else:
+            for i in range(args.iter):
+                lower = (i % (data[0].shape[0]/args.batchsize)) * args.batchsize
+                upper = lower + args.batchsize
+                solver.net.set_input_arrays(
+                    data[0][lower:upper], data[1][lower:upper])
+                solver.step(1)
+
     t1 = timer()
     gc.enable()
     
     print "Time: %.4f" % (t1 - t0)
-    if args.memory:
+    if args.memory and not args.bulk:
         print "Iterations: %d" % (args.iter,)
 
 if __name__ == "__main__":

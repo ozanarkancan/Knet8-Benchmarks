@@ -1,4 +1,4 @@
-name:"MLP"
+name:"Softmax"
 layer {
   type: "MemoryData"
   top: "data"
@@ -11,10 +11,10 @@ layer {
   }
 }
 layer {
-  name: "ip1"
+  name: "ip"
   type: "InnerProduct"
   bottom: "data"
-  top: "ip1"
+  top: "ip"
   inner_product_param {
     num_output: 64
     weight_filler {
@@ -27,31 +27,9 @@ layer {
   }
 }
 layer {
-  name: "relu1"
-  type: "ReLU"
-  bottom: "ip1"
-  top: "ip1"
-}
-layer {
-  name: "ip2"
-  type: "InnerProduct"
-  bottom: "ip1"
-  top: "ip2"
-  inner_product_param {
-    num_output: 10
-    weight_filler {
-      type: "gaussian"
-      std: 0.1
-    }
-    bias_filler {
-      type: "constant"
-    }
-  }
-}
-layer {
   name: "accuracy"
   type: "Accuracy"
-  bottom: "ip2"
+  bottom: "ip"
   bottom: "label"
   top: "accuracy"
   include {
@@ -61,7 +39,7 @@ layer {
 layer {
   name: "loss"
   type: "SoftmaxWithLoss"
-  bottom: "ip2"
+  bottom: "ip"
   bottom: "label"
   top: "loss"
 }
