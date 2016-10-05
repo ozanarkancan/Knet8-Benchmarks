@@ -4,146 +4,146 @@ Theano Benchmarks Using: gpu
 (506, 1)
 ...building the model
 ...training
-Loss: 21.8948307037, Time: 1.89881110191 seconds
+Loss: 21.8948326111, Time: 1.90259194374 seconds
 ...loading the data
 (506, 13)
 (506, 1)
 ...building the model
 ...training
-Loss: 21.8948326111, Time: 1.8880469799 seconds
+Loss: 21.8948307037, Time: 1.90856218338 seconds
 ...loading the data
 (506, 13)
 (506, 1)
 ...building the model
 ...training
-Loss: 21.8948307037, Time: 1.88892102242 seconds
+Loss: 21.8948307037, Time: 1.91613507271 seconds
 ...loading the data
 (506, 13)
 (506, 1)
 ...building the model
 ...training
-Loss: 21.8948326111, Time: 1.89967298508 seconds
+Loss: 21.8948326111, Time: 1.90608787537 seconds
 ...loading the data
 (506, 13)
 (506, 1)
 ...building the model
 ...training
-Loss: 21.8948307037, Time: 1.88905692101 seconds
+Loss: 21.8948326111, Time: 1.90655207634 seconds
 ...loading the data
 (506, 13)
 (506, 1)
 ...building the model
 ...training
-Loss: 21.8948326111, Time: 1.89926791191 seconds
+Loss: 21.8948307037, Time: 1.89136385918 seconds
 
 *** MNIST Softmax Example ***...loading the data
 ...building the model
 ...training
-Loss: 0.267386951922, Time: 1.40163898468 seconds
+Loss: 0.267342601558, Time: 1.43858599663 seconds
 ...loading the data
 ...building the model
 ...training
-Loss: 0.267209140013, Time: 1.42277002335 seconds
+Loss: 0.267214409426, Time: 1.42550301552 seconds
 ...loading the data
 ...building the model
 ...training
-Loss: 0.267367936702, Time: 1.40824103355 seconds
+Loss: 0.267258935878, Time: 1.40688800812 seconds
 ...loading the data
 ...building the model
 ...training
-Loss: 0.267193001316, Time: 1.43124079704 seconds
+Loss: 0.267381729319, Time: 1.42810606956 seconds
 ...loading the data
 ...building the model
 ...training
-Loss: 0.267389392927, Time: 1.44882512093 seconds
+Loss: 0.267226405522, Time: 1.41735315323 seconds
 ...loading the data
 ...building the model
 ...training
-Loss: 0.267529839091, Time: 1.41813898087 seconds
+Loss: 0.267355744923, Time: 1.43306398392 seconds
 
 *** MNIST Mlp Example ***...loading the data
 ...building the model
 ...training
-Loss: 0.0225291445639, Time: 2.31077003479 seconds
+Loss: 0.0237860119446, Time: 2.31446194649 seconds
 ...loading the data
 ...building the model
 ...training
-Loss: 0.0235131537304, Time: 2.32287621498 seconds
+Loss: 0.0217395302757, Time: 2.31525707245 seconds
 ...loading the data
 ...building the model
 ...training
-Loss: 0.0222517919155, Time: 2.31441092491 seconds
+Loss: 0.0219540264304, Time: 2.32222104073 seconds
 ...loading the data
 ...building the model
 ...training
-Loss: 0.0246679597752, Time: 2.31530213356 seconds
+Loss: 0.0228523711921, Time: 2.32465696335 seconds
 ...loading the data
 ...building the model
 ...training
-Loss: 0.0230166223008, Time: 2.31094384193 seconds
+Loss: 0.0220813319566, Time: 2.3268020153 seconds
 ...loading the data
 ...building the model
 ...training
-Loss: 0.0231131795112, Time: 2.31804680824 seconds
+Loss: 0.021563847229, Time: 2.29537010193 seconds
 
 *** MNIST Lenet Example ***...loading the data
 ...building the model
 ...training
-Loss: 0.226579602959, Time: 3.03352999687 seconds
+Loss: 0.226445422014, Time: 3.02691292763 seconds
 ...loading the data
 ...building the model
 ...training
-Loss: 0.226282950776, Time: 3.0334250927 seconds
+Loss: 0.226484696138, Time: 3.0227329731 seconds
 ...loading the data
 ...building the model
 ...training
-Loss: 0.226487343938, Time: 3.04083800316 seconds
+Loss: 0.226373361812, Time: 3.0265750885 seconds
 ...loading the data
 ...building the model
 ...training
-Loss: 0.226443978356, Time: 3.03648900986 seconds
+Loss: 0.226474633894, Time: 3.02618503571 seconds
 ...loading the data
 ...building the model
 ...training
-Loss: 0.226367016019, Time: 3.031717062 seconds
+Loss: 0.22637227259, Time: 3.02266478539 seconds
 ...loading the data
 ...building the model
 ...training
-Loss: 0.226360453311, Time: 3.03472685814 seconds
+Loss: 0.2263019707, Time: 3.02587604523 seconds
 
 *** Charlm Example ***Corpus length: 214325
 #dic = 84
 #features =  84 #labels =  84
 compiling...
 training...
-Iter = 0, Loss = 8.799391523, Time = 4.68602895737
+Iter = 0, Loss = 3.62007139623, Time = 3.13504600525
 Corpus length: 214325
 #dic = 84
 #features =  84 #labels =  84
 compiling...
 training...
-Iter = 0, Loss = 10.4539338946, Time = 4.57579398155
+Iter = 0, Loss = 3.60602544248, Time = 3.1437151432
 Corpus length: 214325
 #dic = 84
 #features =  84 #labels =  84
 compiling...
 training...
-Iter = 0, Loss = 7.79813843966, Time = 4.56697392464
+Iter = 0, Loss = 3.68509402871, Time = 2.42317008972
 Corpus length: 214325
 #dic = 84
 #features =  84 #labels =  84
 compiling...
 training...
-Iter = 0, Loss = 14.4951942265, Time = 4.5951731205
+Iter = 0, Loss = 3.62064625323, Time = 3.15468907356
 Corpus length: 214325
 #dic = 84
 #features =  84 #labels =  84
 compiling...
 training...
-Iter = 0, Loss = 7.71692578495, Time = 4.7080988884
+Iter = 0, Loss = 3.68278127909, Time = 2.41993403435
 Corpus length: 214325
 #dic = 84
 #features =  84 #labels =  84
 compiling...
 training...
-Iter = 0, Loss = 9.23257146776, Time = 4.56944298744
+Iter = 0, Loss = 3.6067789495, Time = 2.42233705521
