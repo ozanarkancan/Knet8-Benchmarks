@@ -1,1 +1,3 @@
 *.pyc
+data/data.h5
+data/caffe_mnist/
