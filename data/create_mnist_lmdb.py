@@ -24,32 +24,20 @@ def make_mnist_lmdb(source, target, flatten=False):
     if flatten:
         h, w = 1, 784
 
-    xtrn = xtrn.reshape(xtrn.shape[0], 1, h, w).astype(np.float32)
-    ytrn = ytrn.reshape(ytrn.shape[0], 1, 1, 1).astype(np.float32)
-    xtst = xtst.reshape(xtst.shape[0], 1, h, w).astype(np.float32)
-    ytst = ytst.reshape(ytst.shape[0], 1, 1, 1).astype(np.float32)
+    xtrn = xtrn.reshape(xtrn.shape[0], 1, h, w).astype(np.float)
+    ytrn = ytrn.reshape(ytrn.shape[0], 1, 1, 1).astype(np.float)
+    xtst = xtst.reshape(xtst.shape[0], 1, h, w).astype(np.float)
+    ytst = ytst.reshape(ytst.shape[0], 1, 1, 1).astype(np.float)
 
     # LMDB part for trn
     savedir = os.path.abspath(os.path.join(target, "trn"))
     if not os.path.exists(savedir):
         os.makedirs(savedir)
-    trndb = lmdb.open(savedir, map_size=int(1e12), map_async=True, writemap=True)
+    trndb = lmdb.open(savedir, map_size=int(1e12), map_async=True, max_dbs=0)
     trntxn = trndb.begin(write=True)
 
-    datum = caffe.proto.caffe_pb2.Datum()
-    datum.channels = 1
-    if flatten:
-        datum.height = 1
-        datum.width = 784
-    else:
-        datum.height = 28
-        datum.width = 28
-    
     for i in range(xtrn.shape[0]):
-        x = xtrn[i]
-        y = ytrn[i]
-        datum.data = x.tobytes()
-        datum.label = int(y)
+        datum = caffe.io.array_to_datum(xtrn[i], int(ytrn[i,0,0,0]))
         trntxn.put('{:0>10d}'.format(i), datum.SerializeToString())
     trntxn.commit()
     trndb.close()
@@ -58,23 +46,11 @@ def make_mnist_lmdb(source, target, flatten=False):
     savedir = os.path.abspath(os.path.join(target, "tst"))
     if not os.path.exists(savedir):
         os.makedirs(savedir)
-    tstdb = lmdb.open(savedir, map_size=int(1e12), map_async=True, writemap=True)
+    tstdb = lmdb.open(savedir, map_size=int(1e12), map_async=True, max_dbs=0)
     tsttxn = tstdb.begin(write=True)
 
-    datum = caffe.proto.caffe_pb2.Datum()
-    datum.channels = 1
-    if flatten:
-        datum.height = 1
-        datum.width = 784
-    else:
-        datum.height = 28
-        datum.width = 28
-    
     for i in range(xtst.shape[0]):
-        x = xtst[i]
-        y = ytst[i]
-        datum.data = x.tobytes()
-        datum.label = int(y)
+        datum = caffe.io.array_to_datum(xtst[i], int(ytst[i,0,0,0]))
         tsttxn.put('{:0>10d}'.format(i), datum.SerializeToString())
     tsttxn.commit()
     tstdb.close()
