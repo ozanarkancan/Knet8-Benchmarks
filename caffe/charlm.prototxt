@@ -3,27 +3,15 @@ layer {
   name: "data"
   type: "DummyData"
   top: "source"
-  dummy_data_param {
-    shape {
-      dim: 100
-      dim: 128
-    }
-    data_filler: { type: "gaussian" }
-  }
-
-}
-
-layer {
-  name: "data"
-  type: "DummyData"
   top: "mask"
   dummy_data_param {
     shape {
       dim: 100
       dim: 128
     }
-  }
     data_filler: { type: "gaussian" }
+  }
+
 }
 
 # embed layer
