@@ -7,28 +7,8 @@ layer {
   top: "label"
   hdf5_data_param {
     source: "/home/ec2-user/Knet8-Benchmarks/data/files.txt"
-    batch_size: 99 # it's not actually 100
+    batch_size: 99 # not batch size it's seqlen and not actually 100
   }
-  # dummy_data_param {
-  #   shape {
-  #     dim: 100
-  #     dim: 128
-  #     # dim: 1
-  #   }
-  #   data_filler: { type: "constant" value: 84 }
-  #   shape {
-  #     dim: 100
-  #     dim: 128
-  #     # dim: 1
-  #   }
-  #   data_filler: { type: "constant" value: 0 }
-  #   shape {
-  #     dim: 100
-  #     dim: 128
-  #     # dim: 1
-  #   }
-  #   data_filler: { type: "constant" value: 7 }
-  # }
 }
 
 # embed layer
@@ -39,7 +19,7 @@ layer {
   top: "embed"
   embed_param {
     bias_term: false
-    input_dim: 84
+    input_dim: 84 # vocabsize
     num_output: 256 # embedsize
     weight_filler {
       type: "gaussian"
@@ -77,9 +57,8 @@ layer {
   inner_product_param {
     num_output: 84
     weight_filler {
-      type: "uniform"
-      min: -0.08
-      max: 0.08
+      type: "gaussian"
+      std: 0.3
     }
     bias_filler {
       type: "constant"

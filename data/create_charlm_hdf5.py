@@ -28,20 +28,18 @@ for i in range(cont.shape[0]):
         cont[i] = 0
 
 i, j, k = 0, 0, 0
-while True:
-    #print i, j, k
+while j >= source.shape[0]:
     lo, up = i * timesteps, (i+1) * timesteps
     so = np.array(map(lambda x: vocab[x], txt[lo:up-1])).astype(np.uint8)
     ta = np.array(map(lambda x: vocab[x], txt[lo+1:up])).astype(np.uint8)
     source[j:j+timesteps-1,k] = so.reshape(1,99)
     target[j:j+timesteps-1,k] = ta.reshape(1,99)
+
+    i += 1
     k += 1
     if k >= 128:
         k = 0
-        j = j + timesteps - 1
-    i += 1
-    if j >= source.shape[0]:
-        break
+        j += (timesteps - 1)
 
 
 f = h5py.File("data.h5", "w")
@@ -51,4 +49,5 @@ f.create_dataset('cont', data=cont)
 f.close()
 
 print 'Done.'
-print 'vocab; %d' % (len(vocab))
+print 'vocab: %d' % (len(vocab))
+print source.shape
