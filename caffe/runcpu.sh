@@ -22,6 +22,7 @@ for i in `seq 1 5`; do
 	python runmnist.py --solver lenet_solver.prototxt 
 done
 
-printf "CHARLM\n"; do
+printf "CHARLM\n"
+for i in `seq 1 5`; do
 	python charlm.py --solver charlm_solver.prototxt 
 done 
