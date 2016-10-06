@@ -7,9 +7,6 @@ layer {
   include {
     phase: TRAIN
   }
-  transform_param {
-    scale: 0.00390625
-  }
   data_param {
     source: "/home/ec2-user/Knet8-Benchmarks/data/caffe_mnist/trn"
     batch_size: 100
@@ -23,9 +20,6 @@ layer {
   top: "label"
   include {
     phase: TEST
-  }
-  transform_param {
-    scale: 0.00390625
   }
   data_param {
     source: "/home/ec2-user/Knet8-Benchmarks/data/caffe_mnist/tst"

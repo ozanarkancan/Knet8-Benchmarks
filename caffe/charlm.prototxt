@@ -6,7 +6,7 @@ layer {
   top: "cont"
   top: "label"
   hdf5_data_param {
-    source: "/home/ec2-user/Knet8-Benchmarks/data/files.txt"
+    source: "/home/ec2-user/Knet8-Benchmarks/data/charlm.txt"
     batch_size: 99 # not batch size it's seqlen and not actually 100
   }
 }
