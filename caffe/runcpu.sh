@@ -24,5 +24,5 @@ done
 
 printf "CHARLM\n"
 for i in `seq 1 5`; do
-	python charlm.py --solver charlm_solver.prototxt 
+	python runcharlm.py --solver charlm_solver.prototxt 
 done 
