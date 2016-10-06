@@ -1,0 +1,114 @@
+GPU BULK RUN
+
+HOUSING
+Namespace(data='/home/ec2-user/Knet8-Benchmarks/data/housing.data', debug=False, gpu=True, solver='housing_solver.prototxt')
+Time: 2.3690
+Namespace(data='/home/ec2-user/Knet8-Benchmarks/data/housing.data', debug=False, gpu=True, solver='housing_solver.prototxt')
+Time: 2.3718
+Namespace(data='/home/ec2-user/Knet8-Benchmarks/data/housing.data', debug=False, gpu=True, solver='housing_solver.prototxt')
+Time: 2.3616
+Namespace(data='/home/ec2-user/Knet8-Benchmarks/data/housing.data', debug=False, gpu=True, solver='housing_solver.prototxt')
+Time: 2.3772
+Namespace(data='/home/ec2-user/Knet8-Benchmarks/data/housing.data', debug=False, gpu=True, solver='housing_solver.prototxt')
+Time: 2.3531
+SOFTMAX
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=True, iter=None, memory=False, solver='softmax_solver.prototxt')
+Time: 2.8994
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=True, iter=None, memory=False, solver='softmax_solver.prototxt')
+Time: 3.1320
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=True, iter=None, memory=False, solver='softmax_solver.prototxt')
+Time: 2.8776
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=True, iter=None, memory=False, solver='softmax_solver.prototxt')
+Time: 2.5368
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=True, iter=None, memory=False, solver='softmax_solver.prototxt')
+Time: 2.4589
+MLP
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=True, iter=None, memory=False, solver='mlp_solver.prototxt')
+Time: 3.6985
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=True, iter=None, memory=False, solver='mlp_solver.prototxt')
+Time: 3.7932
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=True, iter=None, memory=False, solver='mlp_solver.prototxt')
+Time: 3.7471
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=True, iter=None, memory=False, solver='mlp_solver.prototxt')
+Time: 3.7425
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=True, iter=None, memory=False, solver='mlp_solver.prototxt')
+Time: 3.7610
+LENET
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=True, iter=None, memory=False, solver='lenet_solver.prototxt')
+Time: 3.5473
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=True, iter=None, memory=False, solver='lenet_solver.prototxt')
+Time: 3.5537
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=True, iter=None, memory=False, solver='lenet_solver.prototxt')
+Time: 3.5550
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=True, iter=None, memory=False, solver='lenet_solver.prototxt')
+Time: 3.5551
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=True, iter=None, memory=False, solver='lenet_solver.prototxt')
+Time: 3.5509
+CHARLM
+Namespace(debug=False, gpu=True, solver='charlm_solver.prototxt')
+Time: 1.4403
+Namespace(debug=False, gpu=True, solver='charlm_solver.prototxt')
+Time: 1.4360
+Namespace(debug=False, gpu=True, solver='charlm_solver.prototxt')
+Time: 1.4357
+Namespace(debug=False, gpu=True, solver='charlm_solver.prototxt')
+Time: 1.4365
+Namespace(debug=False, gpu=True, solver='charlm_solver.prototxt')
+Time: 1.4375
+CPU BULK RUN
+
+HOUSING
+Namespace(data='/home/ec2-user/Knet8-Benchmarks/data/housing.data', debug=False, gpu=False, solver='housing_solver.prototxt')
+Time: 0.4009
+Namespace(data='/home/ec2-user/Knet8-Benchmarks/data/housing.data', debug=False, gpu=False, solver='housing_solver.prototxt')
+Time: 0.4047
+Namespace(data='/home/ec2-user/Knet8-Benchmarks/data/housing.data', debug=False, gpu=False, solver='housing_solver.prototxt')
+Time: 0.4025
+Namespace(data='/home/ec2-user/Knet8-Benchmarks/data/housing.data', debug=False, gpu=False, solver='housing_solver.prototxt')
+Time: 0.4041
+Namespace(data='/home/ec2-user/Knet8-Benchmarks/data/housing.data', debug=False, gpu=False, solver='housing_solver.prototxt')
+Time: 0.4022
+SOFTMAX
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='softmax_solver.prototxt')
+Time: 3.9859
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='softmax_solver.prototxt')
+Time: 3.9643
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='softmax_solver.prototxt')
+Time: 3.9912
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='softmax_solver.prototxt')
+Time: 4.0363
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='softmax_solver.prototxt')
+Time: 3.9736
+MLP
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='mlp_solver.prototxt')
+Time: 19.6189
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='mlp_solver.prototxt')
+Time: 19.7731
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='mlp_solver.prototxt')
+Time: 19.5528
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='mlp_solver.prototxt')
+Time: 19.3551
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='mlp_solver.prototxt')
+Time: 19.7038
+LENET
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='lenet_solver.prototxt')
+Time: 167.2658
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='lenet_solver.prototxt')
+Time: 167.8894
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='lenet_solver.prototxt')
+Time: 166.3335
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='lenet_solver.prototxt')
+Time: 169.0034
+Namespace(batchsize=100, bulk=False, data='/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz', debug=False, flatten=False, gpu=False, iter=None, memory=False, solver='lenet_solver.prototxt')
+Time: 169.2051
+CHARLM
+Namespace(debug=False, gpu=False, solver='charlm_solver.prototxt')
+Time: 56.6276
+Namespace(debug=False, gpu=False, solver='charlm_solver.prototxt')
+Time: 56.5854
+Namespace(debug=False, gpu=False, solver='charlm_solver.prototxt')
+Time: 58.7680
+Namespace(debug=False, gpu=False, solver='charlm_solver.prototxt')
+Time: 56.9532
+Namespace(debug=False, gpu=False, solver='charlm_solver.prototxt')
+Time: 56.5577
