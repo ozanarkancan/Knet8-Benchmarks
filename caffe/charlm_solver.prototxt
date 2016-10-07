@@ -1,10 +1,9 @@
 net: "charlm.prototxt"
 base_lr: 4.0
 lr_policy: "fixed"
-# test_iter: 100
-# test_interval: 600
-display: 1
+display: 0
 random_seed: 1
-max_iter: 1
+max_iter: 16
 snapshot_after_train: false
 solver_mode: GPU
+clip_gradients: 3.0

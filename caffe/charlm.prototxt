@@ -1,41 +1,26 @@
 name: "CharLM"
 layer {
   name: "data"
-  type: "DummyData"
-  top: "source"
-  dummy_data_param {
-    shape {
-      dim: 100
-      dim: 128
-    }
-    data_filler: { type: "gaussian" }
+  type: "HDF5Data"
+  top: "data"
+  top: "cont"
+  top: "label"
+  hdf5_data_param {
+    source: "/home/ec2-user/Knet8-Benchmarks/data/charlm.txt"
+    batch_size: 99 # not batch size it's seqlen and not actually 100
   }
-
-}
-
-layer {
-  name: "data"
-  type: "DummyData"
-  top: "mask"
-  dummy_data_param {
-    shape {
-      dim: 100
-      dim: 128
-    }
-  }
-    data_filler: { type: "gaussian" }
 }
 
 # embed layer
 layer {
   name: "embed"
   type: "Embed"
-  bottom: "source"
+  bottom: "data"
   top: "embed"
   embed_param {
     bias_term: false
-    input_dim: 84
-    num_output: 64 # embedsize
+    input_dim: 84 # vocabsize
+    num_output: 256 # embedsize
     weight_filler {
       type: "gaussian"
       std: 0.3
@@ -47,8 +32,8 @@ layer {
 layer {
   name: "lstm"
   type: "LSTM"
-  bottom: "source"
-  bottom: "mask"
+  bottom: "embed"
+  bottom: "cont"
   top: "lstm"
   recurrent_param {
     num_output: 256 # cell capacity
@@ -56,13 +41,39 @@ layer {
       type: "gaussian"
       std: 0.3
     }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+
+# predict layer
+layer {
+  name: "predict"
+  type: "InnerProduct"
+  bottom: "lstm"
+  top: "predict"
+  inner_product_param {
+    num_output: 84
+    weight_filler {
+      type: "gaussian"
+      std: 0.3
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+    axis: 2
   }
 }
 
 # cross entropy loss layer
 layer {
-  name: "probs"
-  type: "Softmax"
-  bottom: "lstm"
-  top: "probs"
+  name: "cross_entropy_loss"
+  type: "SoftmaxWithLoss"
+  bottom: "predict"
+  bottom: "label"
+  top: "cross_entropy_loss"
+  softmax_param { axis: 2 }
 }

@@ -7,14 +7,10 @@ layer {
   include {
     phase: TRAIN
   }
-  transform_param {
-    scale: 0.00390625
-  }
   data_param {
-    source: "/home/ec2-user/caffe/examples/mnist/mnist_train_lmdb"
+    source: "/home/ec2-user/Knet8-Benchmarks/data/caffe_mnist/trn"
     batch_size: 100
      backend: LMDB
-    prefetch: 600
   }
 }
 layer {
@@ -25,14 +21,10 @@ layer {
   include {
     phase: TEST
   }
-  transform_param {
-    scale: 0.00390625
-  }
   data_param {
-    source: "/home/ec2-user/caffe/examples/mnist/mnist_test_lmdb"
+    source: "/home/ec2-user/Knet8-Benchmarks/data/caffe_mnist/tst"
     batch_size: 100
     backend: LMDB
-    prefetch: 600
   }
 }
 layer {

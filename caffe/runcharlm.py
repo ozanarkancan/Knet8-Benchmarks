@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from timeit import default_timer as timer
 import gc
@@ -11,7 +12,8 @@ def main():
     parser.add_argument("--debug", action="store_true", help="enable glog output")
     args = parser.parse_args()
 
-    import os
+    print args
+
     if not args.debug:
         os.environ['GLOG_minloglevel'] = '2'
     import caffe
@@ -23,7 +25,6 @@ def main():
         caffe.set_mode_cpu()
 
     solver = caffe.SGDSolver(os.path.abspath(args.solver))
-    
     gc.disable()
     t0 = timer()
     solver.solve()
@@ -31,7 +32,6 @@ def main():
     gc.enable()
     
     print "Time: %.4f" % (t1 - t0)
-
 
 if __name__ == "__main__":
     main()
