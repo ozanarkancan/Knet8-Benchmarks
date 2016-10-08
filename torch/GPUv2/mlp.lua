@@ -70,7 +70,7 @@ model = nn.Sequential()
    :add(nn.LogSoftMax())
 -- loss function
 criterion = nn.ClassNLLCriterion()
-print(model)
+--print(model)
 
 print("On GPU")
 model = model:cuda()

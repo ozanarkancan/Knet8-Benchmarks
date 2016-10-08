@@ -1,20 +1,5 @@
-[ec2-user@ip-172-31-4-130 CPU]$ th lenet.lua
-Epoch: 0 Initial Testset Accuracy: 0.0789
-Epoch: 1 Current loss: 0.251649 Testset Accuracy:0.9671 Time:27.9881
 Time:27.9881
-[ec2-user@ip-172-31-4-130 CPU]$ th lenet.lua
-Epoch: 0 Initial Testset Accuracy: 0.0789
-Epoch: 1 Current loss: 0.251649 Testset Accuracy:0.9671 Time:28.0433
 Time:28.0433
-[ec2-user@ip-172-31-4-130 CPU]$ th lenet.lua
-Epoch: 0 Initial Testset Accuracy: 0.0789
-Epoch: 1 Current loss: 0.251649 Testset Accuracy:0.9671 Time:27.9306
 Time:27.9306
-[ec2-user@ip-172-31-4-130 CPU]$ th lenet.lua
-Epoch: 0 Initial Testset Accuracy: 0.0789
-Epoch: 1 Current loss: 0.251649 Testset Accuracy:0.9671 Time:28.1156
 Time:28.1156
-[ec2-user@ip-172-31-4-130 CPU]$ th lenet.lua
-Epoch: 0 Initial Testset Accuracy: 0.0789
-Epoch: 1 Current loss: 0.251649 Testset Accuracy:0.9671 Time:28.0604
 Time:28.0604

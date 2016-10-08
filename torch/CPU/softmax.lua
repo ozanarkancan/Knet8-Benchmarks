@@ -127,7 +127,7 @@ do
    for i = 1,opt.epoch do
       local loss,epoch_time = train(opt.batchsize)
       total_time = total_time + epoch_time
-      local eval_res = 0 --eval(testset,opt.batchsize)
+      local eval_res = eval(testset,opt.batchsize)
       print(string.format('Epoch: %d Loss: %.4f Testset Accuracy: %.4f Time:%.4f', i,loss,eval_res,epoch_time))
    end
    print(string.format('Time:%.4f', total_time))

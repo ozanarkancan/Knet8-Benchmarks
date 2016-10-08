@@ -63,7 +63,7 @@ model = nn.Sequential()
 
 -- loss function
 criterion = nn.ClassNLLCriterion()
-print(model)
+--print(model)
 
 -- put them into gpu
 print("On GPU")
