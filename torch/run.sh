@@ -1,7 +1,7 @@
 #!/bin/bash
 
 MODE=${1:-"GPUv1"}
-RUNTIME=1
+RUNTIME=6
 
 printf "Torch Benchmarks on Housing, Softmax, MLP, Lenet and Charlm examples. Selected mode = $MODE .All Possible modes = [GPUv1 GPUv2 CPU]\n"
 
