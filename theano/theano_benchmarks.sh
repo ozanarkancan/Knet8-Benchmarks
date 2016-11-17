@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export PATH="/home/ec2-user/anaconda2/bin:$PATH"
 device=$1
 
 printf "Theano Benchmarks Using: $device \n"

@@ -1,4 +1,5 @@
 *.pyc
 data/data.h5
 data/caffe_mnist/
+data/caffe_mnist_flatten/
 *.h5

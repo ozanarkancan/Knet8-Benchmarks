@@ -8,7 +8,7 @@ layer {
     phase: TRAIN
   }
   data_param {
-    source: "/home/ec2-user/Knet8-Benchmarks/data/caffe_mnist/trn"
+    source: "/home/ec2-user/Knet8-Benchmarks/data/caffe_mnist_flatten/trn"
     batch_size: 100
      backend: LMDB
   }
@@ -22,7 +22,7 @@ layer {
     phase: TEST
   }
   data_param {
-    source: "/home/ec2-user/Knet8-Benchmarks/data/caffe_mnist/tst"
+    source: "/home/ec2-user/Knet8-Benchmarks/data/caffe_mnist_flatten/tst"
     batch_size: 100
     backend: LMDB
   }

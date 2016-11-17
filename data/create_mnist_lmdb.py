@@ -4,6 +4,7 @@ import numpy as np
 import lmdb
 import caffe
 import six.moves.cPickle as pickle
+import argparse
 
 SOURCE="/home/ec2-user/Knet8-Benchmarks/data/mnist.pkl.gz"
 
@@ -57,7 +58,14 @@ def make_mnist_lmdb(source, target, flatten=False):
 
 
 def main():
-    make_mnist_lmdb(SOURCE, "caffe_mnist", flatten=True) 
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--source", required=True, type=str, help="raw MNIST pickle file")
+    parser.add_argument("--target", required=True, type=str, help="output directory")
+    parser.add_argument("--flatten", action="store_true", help="data has one dimension or not")
+    args  = parser.parse_args()
+
+    print args
+    make_mnist_lmdb(args.source, args.target, flatten=args.flatten) 
     print "Done"
 
 if __name__ == "__main__":
