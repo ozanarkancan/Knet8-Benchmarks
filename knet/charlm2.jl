@@ -210,8 +210,8 @@ function train1(param, state, sequence; slen=100, lr=1.0, gclip=0.0)
             param[k] -= gscale * gloss[k] # TODO: try axpy! to see if it is worth it
         end
         for i = 1:length(state)
-            isa(state,Value) && error("State should not be a Value.")
-            state[i] = getval(state[i])
+            #isa(state,Value) && error("State should not be a Value.")
+            state[i] = AutoGrad.getval(state[i])
         end
     end
 end
@@ -223,7 +223,7 @@ function train!(model, text, vocab, o)
     if o[:fast]
         @time (for epoch=1:o[:epochs]
                train1(model, copy(s0), data[1]; slen=o[:seqlength], lr=lr, gclip=o[:gclip])
-               end; Knet.gpusync())
+               end; Knet.cudaDeviceSynchronize())
         return
     end
     @time losses = map(d->loss(model,copy(s0),d), data)
